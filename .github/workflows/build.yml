@@ -5,8 +5,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: unzip -q RazaAIAssistant.zip
-      - uses: actions/setup-java@v4
+      - name: Unzip project
+        run: |
+          ls -la
+          unzip -q "$(ls *.zip | head -n 1)"
+          ls -la
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: 17
